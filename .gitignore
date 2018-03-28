@@ -1,0 +1,15 @@
+*.o
+*.so
+*.d
+*.a
+/.svn
+/.libs
+*.bak
+*.log
+/Debug
+/tafjcedepend
+a.out
+.cproject
+.project
+.settings
+~*
