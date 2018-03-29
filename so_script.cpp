@@ -146,11 +146,11 @@ namespace so_script
         {
             return -1;
         }
-
         so_handler = dlopen(so_path.c_str(), RTLD_NOW);
         if (NULL == so_handler)
         {
             SetBuildError(dlerror());
+            return -1;
         }
         return 0;
     }

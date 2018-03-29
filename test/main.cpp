@@ -49,8 +49,7 @@ void test_c()
     s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    s.Build();
-    if (!s.GetBuildError().empty())
+    if (0 != s.Build())
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }
@@ -70,8 +69,7 @@ void test_cpp()
     s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    s.Build();
-    if (!s.GetBuildError().empty())
+    if (0 != s.Build())
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }

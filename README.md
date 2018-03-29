@@ -20,15 +20,14 @@ void test_c()
     s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    s.Build();
-    if (!s.GetBuildError().empty())
+    if (0 != s.Build())
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }
     else
     {
-        EntryFunc entry = (EntryFunc) s.GetFunc("hello_func");
-        entry(101, NULL);
+        CEntryFunc entry = (CEntryFunc) s.GetFunc("hello_func");
+        entry(101);
     }
 }
 
@@ -41,16 +40,15 @@ void test_cpp()
     s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    s.Build();
-    if (!s.GetBuildError().empty())
+    if (0 != s.Build())
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }
     else
     {
-        EntryFunc entry = (EntryFunc) s.GetFunc("hello_func");
+        CppEntryFunc entry = (CppEntryFunc) s.GetFunc("hello_func");
         std::string arg = "hello, world!";
-        entry(102, &arg);
+        entry(102, arg);
     }
 }
 ```
