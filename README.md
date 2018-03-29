@@ -55,6 +55,13 @@ void test_cpp()
 }
 ```
 
+```shell
+   cd test
+   g++ main.cpp ../so_script.cpp -I../ -ldl -rdynamic
+   ./a.out
+
+```
+
 ## Embedding so_script
 
-Just copy the source files into your project. 
+Just copy the source files without test into your project. 

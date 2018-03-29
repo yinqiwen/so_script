@@ -28,6 +28,7 @@
  */
 #include "so_script.hpp"
 #include "test_func.h"
+#include "test_func.hpp"
 
 void test_func1()
 {
@@ -55,8 +56,8 @@ void test_c()
     }
     else
     {
-        EntryFunc entry = (EntryFunc) s.GetFunc("hello_func");
-        entry(101, NULL);
+        CEntryFunc entry = (CEntryFunc) s.GetFunc("hello_func");
+        entry(101);
     }
 }
 
@@ -76,9 +77,9 @@ void test_cpp()
     }
     else
     {
-        EntryFunc entry = (EntryFunc) s.GetFunc("hello_func");
+        CppEntryFunc entry = (CppEntryFunc) s.GetFunc("hello_func");
         std::string arg = "hello, world!";
-        entry(102, &arg);
+        entry(102, arg);
     }
 }
 

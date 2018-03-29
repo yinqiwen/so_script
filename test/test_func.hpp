@@ -27,13 +27,27 @@
  *THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "test_func.h"
+#ifndef TEST_TEST_FUNC_HPP_
+#define TEST_TEST_FUNC_HPP_
 
-int hello_func(int v)
+#include <stdint.h>
+#include <stdio.h>
+#ifdef __cplusplus
+#include <string>
+extern "C"
 {
-    printf("###c: hello_func:%d\n", v);
-    test_func1();
-    test_func2();
-    return -1;
-}
+#endif
 
+
+    typedef int (*CppEntryFunc)(int, const std::string&);
+
+    void test_func1();
+    void test_func2();
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
+#endif /* TEST_TEST_FUNC_H_ */
