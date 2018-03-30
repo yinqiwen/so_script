@@ -50,9 +50,8 @@ namespace so_script
             Script();
             void SetWorkDir(const std::string& dir);
             int AddInclude(const std::string& inc);
-            int AddSource(const std::string& src);
             int AddCompileFlag(const std::string& src);
-            int Build();
+            int Build(const std::string& script);
             const std::string& GetBuildError();
             void* GetFunc(const std::string& func);
             ~Script();

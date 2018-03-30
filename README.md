@@ -15,12 +15,11 @@ void test_c()
 {
     using namespace so_script;
     Script s;
-    s.AddSource("./test.c");
     s.AddInclude("./");
-    s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
+    s.AddCompileFlag("-D__STDC_FORMAT_MACROS -pipe");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    if (0 != s.Build())
+    if (0 != s.Build("./test.c"))
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }
@@ -35,12 +34,11 @@ void test_cpp()
 {
     using namespace so_script;
     Script s;
-    s.AddSource("./test2.cpp");
     s.AddInclude("./");
-    s.AddCompileFlag("-D__STDC_FORMAT_MACROS");
+    s.AddCompileFlag("-D__STDC_FORMAT_MACROS -pipe");
     s.SetWorkDir("/tmp/so_script"); // the dir where so saved
 
-    if (0 != s.Build())
+    if (0 != s.Build("./test2.cpp"))
     {
         printf("####%s\n", s.GetBuildError().c_str());
     }
