@@ -92,8 +92,8 @@ namespace so_script
         }
         return -1;
     }
-    Script::Script()
-            : work_dir("/tmp/so_script"), so_handler(NULL)
+    Script::Script(bool autoclose)
+            : work_dir("/tmp/so_script"), so_handler(NULL),auto_close(autoclose)
     {
     }
     void Script::SetBuildError(const std::string& err)
@@ -217,10 +217,14 @@ namespace so_script
         }
         return 0;
     }
+    void* Script::GetHandler()
+    {
+    	return so_handler;
+    }
 
     Script::~Script()
     {
-        if (NULL != so_handler)
+        if (NULL != so_handler && auto_close)
         {
             if (0 != dlclose(so_handler))
             {
@@ -228,7 +232,7 @@ namespace so_script
             }
 
         }
-        if (!so_path.empty())
+        if (!so_path.empty()&& auto_close)
         {
             remove(so_path.c_str());
         }

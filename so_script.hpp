@@ -45,15 +45,17 @@ namespace so_script
             std::string so_path;
             std::string name;
             void* so_handler;
+            bool auto_close;
             void SetBuildError(const std::string& err);
         public:
-            Script();
+            Script(bool autoclose = true);
             void SetWorkDir(const std::string& dir);
             int AddInclude(const std::string& inc);
             int AddCompileFlag(const std::string& src);
             int Build(const std::string& script);
             const std::string& GetBuildError();
             void* GetFunc(const std::string& func);
+            void* GetHandler();
             ~Script();
     };
 
